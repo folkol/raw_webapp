@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+  <servlet>
+    <display-name>Comments Servlet</display-name>
+    <servlet-name>Comments</servlet-name>
+    <servlet-class>example.CommentsServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Comments</servlet-name>
+    <url-pattern>/service/comment</url-pattern>
+  </servlet-mapping>
+</web-app>
