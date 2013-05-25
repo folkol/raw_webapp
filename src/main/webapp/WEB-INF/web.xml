@@ -1,29 +1,21 @@
-<?xml version="1.0"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-         version="3.0">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <servlet>
     <display-name>Comments Servlet</display-name>
     <servlet-name>Comments</servlet-name>
     <servlet-class>servlets.CommentsServlet</servlet-class>
   </servlet>
-
   <servlet>
     <display-name>Page Servlet</display-name>
     <servlet-name>Page</servlet-name>
     <servlet-class>servlets.PageServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>Comments</servlet-name>
     <url-pattern>/service/comment</url-pattern>
   </servlet-mapping>
-
   <servlet-mapping>
     <servlet-name>Page</servlet-name>
     <url-pattern>/index.html</url-pattern>
   </servlet-mapping>
-
 </web-app>
