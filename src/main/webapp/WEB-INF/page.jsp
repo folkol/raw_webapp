@@ -3,19 +3,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>title</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <title>Simple chat</title>
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    Message board!
-    <form action="service/comment" method="POST">
-      Alias: <input type="text" name="alias">
-      Message: <input type="text" name="message"><br>
-      <input type="submit">
-    </form>
-    <c:forEach var="comment" items="${comments}">
-      Pisskorv ${comment.alias} sa ${comment.message}<br />
-    </c:forEach>
+    <div class="container">
+      <div class="header">
+        <form action="service/comment" method="POST">
+          <span>Alias: <input type="text" name="alias"></span>
+          <span>Message: <input type="text" name="message"></span>
+          <span><input type="submit"></span>
+        </form>
+      </div>
+      <div class="board">
+          <c:forEach var="comment" items="${comments}">
+            <div>[${comment.alias}] ${comment.message}</div>
+          </c:forEach>
+      </div>
+    </div>
   </body>
 </html>

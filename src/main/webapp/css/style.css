@@ -1,0 +1,20 @@
+html, body, div.container, div.board {
+     height: 100%;
+}
+body {
+     background-color: #ccc;
+     overflow: hidden;
+}
+div.container {
+     width: 90%;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 30px;
+}
+div.header {
+    background-color: #333;
+    color: #fff;
+}
+div.board {
+    background-color: #888;
+}
