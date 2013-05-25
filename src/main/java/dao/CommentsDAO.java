@@ -27,54 +27,31 @@ public class CommentsDAO {
     }
 
     public void store(Comment comment) {
-        Connection conn = null;
-        Statement statement = null;
         try {
-            conn = getConnection();
-            statement = conn.createStatement();
+            Connection conn = getConnection();
+            Statement statement = conn.createStatement();
             statement.executeUpdate("INSERT INTO comments (alias, message) VALUES ('" + comment.getAlias() + "', '" + comment.getMessage() + "')");
+            statement.close();
+            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if(statement != null) {
-                    statement.close();
-                }
-                if(conn != null) {
-                    conn.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
     }
 
     public List<Comment> list() {
         List<Comment> comments = new ArrayList<Comment>();
-        Connection conn = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
         try {
-            conn = getConnection();
-            statement = conn.createStatement();
-            resultSet = statement.executeQuery("SELECT id, alias, message from comments ORDER BY id DESC");
+            Connection conn = getConnection();
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT id, alias, message from comments ORDER BY id DESC");
             while(resultSet.next()) {
                 comments.add(new Comment(resultSet.getString("alias"), resultSet.getString("message")));
             }
+            resultSet.close();
+            statement.close();
+            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if(resultSet != null) {
-                    resultSet.close();
-                }
-                if(statement != null) {
-                    statement.close();
-                }
-                if(conn != null) {
-                    conn.close();
-                }
-            } catch (Exception e ){}
         }
 
         return comments;
