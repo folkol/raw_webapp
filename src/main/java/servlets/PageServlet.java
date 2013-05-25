@@ -1,14 +1,16 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.*;
-import javax.servlet.*;
-import javax.servlet.annotation.*;
-import javax.servlet.http.*;
 import java.util.List;
 
-import dao.CommentsDAO;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import model.Comment;
+import dao.CommentsDAO;
 
 public class PageServlet extends HttpServlet {
 

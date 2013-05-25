@@ -10,7 +10,7 @@
     <div class="container">
       <div class="header">
         <form action="service/comment" method="POST">
-          <span>Alias: <input type="text" name="alias"></span>
+          <span>Alias: <input type="text" name="alias" autofocus></span>
           <span>Message: <input type="text" name="message"></span>
           <span><input type="submit"></span>
         </form>
