@@ -17,7 +17,7 @@
       </div>
       <div class="board">
           <c:forEach var="comment" items="${comments}">
-            <div>[${comment.alias}] ${comment.message}</div>
+            <p><span>[${comment.alias}]</span> ${comment.message}</p>
           </c:forEach>
       </div>
     </div>

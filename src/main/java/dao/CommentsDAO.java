@@ -1,14 +1,15 @@
 package dao;
 
-import model.Comment;
-import java.sql.DriverManager;
 import java.sql.Connection;
-import java.sql.Statement;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Properties;
-import java.util.List;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import model.Comment;
 
 public class CommentsDAO {
 
@@ -41,7 +42,7 @@ public class CommentsDAO {
                 }
                 if(conn != null) {
                     conn.close();
-                } 
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -56,7 +57,7 @@ public class CommentsDAO {
         try {
             conn = getConnection();
             statement = conn.createStatement();
-            resultSet = statement.executeQuery("SELECT * from comments");
+            resultSet = statement.executeQuery("SELECT id, alias, message from comments ORDER BY id DESC");
             while(resultSet.next()) {
                 comments.add(new Comment(resultSet.getString("alias"), resultSet.getString("message")));
             }
@@ -72,7 +73,7 @@ public class CommentsDAO {
                 }
                 if(conn != null) {
                     conn.close();
-                } 
+                }
             } catch (Exception e ){}
         }
 

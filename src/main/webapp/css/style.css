@@ -1,20 +1,30 @@
-html, body, div.container, div.board {
-     height: 100%;
+html,body,div.container,div.board {
+  height: 100%;
 }
+
 body {
-     background-color: #ccc;
-     overflow: hidden;
+  background-color: #ccc;
+  overflow: hidden;
 }
+
 div.container {
-     width: 90%;
-     margin-left: auto;
-     margin-right: auto;
-     margin-top: 30px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  background-color: #888;
 }
+
 div.header {
-    background-color: #333;
-    color: #fff;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
 }
+
 div.board {
-    background-color: #888;
+  padding: 5px;
+}
+
+div.board p span {
+  color: #360;
 }
