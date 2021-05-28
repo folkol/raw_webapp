@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -29,8 +30,10 @@ public class CommentsDAO {
     public void store(Comment comment) {
         try {
             Connection conn = getConnection();
-            Statement statement = conn.createStatement();
-            statement.executeUpdate("INSERT INTO comments (alias, message) VALUES ('" + comment.getAlias() + "', '" + comment.getMessage() + "')");
+            PreparedStatement statement = conn.prepareStatement("INSERT INTO comments (alias, message) VALUES (?, ?)");
+            statement.setString(1, comment.getAlias());
+            statement.setString(2, comment.getMessage());
+            statement.executeUpdate();
             statement.close();
             conn.close();
         } catch (Exception e) {
