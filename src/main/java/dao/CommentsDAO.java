@@ -1,5 +1,7 @@
 package dao;
 
+import model.Comment;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,8 +11,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-
-import model.Comment;
 
 public class CommentsDAO {
 
@@ -28,14 +28,11 @@ public class CommentsDAO {
     }
 
     public void store(Comment comment) {
-        try {
-            Connection conn = getConnection();
-            PreparedStatement statement = conn.prepareStatement("INSERT INTO comments (alias, message) VALUES (?, ?)");
+        try (Connection conn = getConnection();
+             PreparedStatement statement = conn.prepareStatement("INSERT INTO comments (alias, message) VALUES (?, ?)")) {
             statement.setString(1, comment.getAlias());
             statement.setString(2, comment.getMessage());
             statement.executeUpdate();
-            statement.close();
-            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,16 +40,12 @@ public class CommentsDAO {
 
     public List<Comment> list() {
         List<Comment> comments = new ArrayList<Comment>();
-        try {
-            Connection conn = getConnection();
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT id, alias, message from comments ORDER BY id DESC");
-            while(resultSet.next()) {
+        try (Connection conn = getConnection();
+             Statement statement = conn.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT id, alias, message from comments ORDER BY id DESC")) {
+            while (resultSet.next()) {
                 comments.add(new Comment(resultSet.getString("alias"), resultSet.getString("message")));
             }
-            resultSet.close();
-            statement.close();
-            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
